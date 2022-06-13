@@ -1,0 +1,72 @@
+
+ 
+    
+
+
+
+
+body{
+    /*margin: 8;
+    padding: 0;
+    display: flex;*/
+    justify-content: center;
+    background-color: whitesmoke;
+    font-family: 'Roboto Slab', serif;
+}
+
+
+h1{
+    color: red;
+    font-size: 40px;
+   /* justify-content: center;*/
+}
+
+.container{
+    padding: 40;
+    height: 100vh;
+    display: flex;/*dispays everything in the*/
+    justify-content: center;
+    display: flex;
+    align-items: center;/* centers content side by side*/
+    flex-direction: column;/*stacks the content on top of each other*/
+}
+
+#board{
+    width:300px;
+    display:grid;
+    justify-content: center; /* align on vertical center*/
+    align-content: center; /* align on horizontal*/
+    grid-template-columns: repeat(3,auto);
+}
+
+.cell{
+    background-color: rgba(212, 204, 204, 0.867);
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    color: black;
+    align-items: center;/*centers symbol*/
+    font-size: xx-large;
+}
+
+button {
+    width: 75px;
+    height: 35px;
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
