@@ -1,72 +1,58 @@
-
  
-    
 
-
-
-
-body{
-    /*margin: 8;
-    padding: 0;
-    display: flex;*/
-    justify-content: center;
-    background-color: whitesmoke;
-    font-family: 'Roboto Slab', serif;
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
 }
 
-
-h1{
-    color: red;
-    font-size: 40px;
-   /* justify-content: center;*/
+h1 {
+  font-size: 40px;
+  
 }
 
-.container{
-    padding: 40;
-    height: 100vh;
-    display: flex;/*dispays everything in the*/
-    justify-content: center;
-    display: flex;
-    align-items: center;/* centers content side by side*/
-    flex-direction: column;/*stacks the content on top of each other*/
+.container {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: blueviolet;
+  
 }
 
-#board{
-    width:300px;
-    display:grid;
-    justify-content: center; /* align on vertical center*/
-    align-content: center; /* align on horizontal*/
-    grid-template-columns: repeat(3,auto);
+#board {
+  width: 450px;
+  display: grid;
+  margin-top: 20;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  
 }
 
-.cell{
-    background-color: rgba(212, 204, 204, 0.867);
-    width: 100px;
-    height: 100px;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    color: black;
-    align-items: center;/*centers symbol*/
-    font-size: xx-large;
+.box {
+  width: 150px;
+  height: 150px;
+  
+  border: 2px solid black;
+  cursor: pointer;
+  font-size: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(225, 221, 231, 0.536);
+ } 
+
+#winningMessage {
+  font-size: 50px;
+  padding: 10 20;
 }
 
 button {
-    width: 75px;
-    height: 35px;
-    padding: 0;
+  padding: auto;
+  border: 4px;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 70px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

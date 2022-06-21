@@ -1,99 +1,96 @@
-//  const cells = Array.from(Document.getElementsByClassName(cell")); 
-// console.log( cells");
+
+
+const boxes = document.querySelectorAll(".box");
+const winningMessage = document.getElementById("winningMessage");
+const reset = document.getElementById("reset");
+
+let gameOn = false;
+
+
+const initGame = () => {
+  boxes.forEach(box => box.addEventListener("click", boxClicked))
+  reset.addEventListener("click", resetGame);
+ winningMessage.textContent = `${currentPlayer} turn`
+ gameOn = true
+
+}
+
+const winningCombos = [
+       [0, 1, 2],
+       [3, 4, 5],
+       [6, 7, 8],
+       [0, 3, 6],
+       [1, 4, 7],
+       [2, 5, 8],
+       [0, 4, 8],
+       [2, 4, 6]
+ ];
+
+let sqrArray = ["null", "null", "null", "null", "null", "null", "null", "null", "null"];
+let currentPlayer = "X";
 
 
 
+function boxClicked () {
+  const boxIndex = this.getAttribute("boxIndex");
 
+  if(sqrArray[boxIndex] != "" || !gameOn){
+    return;
+  }
+  updatebox(this, boxIndex);
+  checkWinner()
 
+}
 
+const updatebox = (box, index) => {
+  sqrArray[index] = currentPlayer;
+  box.textContent = currentPlayer;
+}
+const switchTurn = () => {
+  currentPlayer = (currentPlayer === "X") ? "O" : "X";
+  winningMessage.textContent = `${currentPlayer} turn`;
 
-const playText = document.getElementById("platText");
+}
 
-
-
-const boxes = [null, null, null, null, null, null, null, null, null]
-//  const playerOne 
-//  const playerTwo =
-
-
-//  cells.forEach() => addEventListener("click",cellClicked); //calling function celled clicked
-
-//  //define function
+const checkWinner = () => {
+   let matchWon = false;
   
+   for (let i = 0; i < winningCombos.length; i++){
+     const combos = winningCombos[i];
+     const boxA = sqrArray[combos[0]];
+     const boxB = sqrArray[combos[1]];
+     const boxC = sqrArray[combos[2]];
+
+     if (boxA === "" || boxB === "" || boxC === "") {
+      continue;
+     }
+     if (boxA === boxB && boxB === boxC) {
+      matchWon = true;
+       
+     }
+  
+   }
+   
+   if (matchWon) {
+     winningMessage.textContent = `${currentPlayer} wins!`
+     gameOn = false;
+   } 
+   else if (!sqrArray.includes("")) {
+     winningMessage.textContent = `Tie!`;
+     gameOn = false
  
-  
-
-//$$$$$$$$$$$$$$
-// mark cells with x or 0
-//check pattern for win 
-//check for tie
-
-const cells = document.querySelectorAll(".cell");
-let playerOne = true;
-let currentPlayer = playerOne
-
-
-function startGame() {
- cells.forEach(cell=>{
-    cell.addEventListener("click", executeGame,{once:true});//one click per cell
-
-    }) 
-}
-function executeGame() {
-    this.innerText =  playerOne?"X" :"0"; // if not true =0
-    playerOne=!playerOne; ///  false
+   } 
+   else {
+       switchTurn();
+   }
 }
 
-startGame();
+const resetGame = () => {
+  currentPlayer = "X";
+  sqrArray = ["", "", "", "", "", "", "", "", ""];
+  winningMessage.textContent = `${currentPlayer} turn`;
+  boxes.forEach(box => box.textContent = "");
+  gameOn = true;
+}
+initGame();
 
-
-
-////// winning combos
-
-//const playerHasWon = ( ) => {
-  //if(boxes[0] === currentPlayer){
-    //   if(boxes[1] === currentPlayer && boxes[2] === player) {
-         //  console.log(`${currentPlayer} wins up top.`);
-           //return true;
-      // }
-      //if(boxes[3] === currentPlayer && boxes[6] === player) {
-        //   console.log(`${currentPlayer} wins on the left.`);
-          // return true;
-       //}
-      //if(boxes[4] === currentPlayer && boxes[8] === player) {
-        //   console.log(`${currentPlayer} wins  diagonal.`);
-          // return true;
-       //}
-     //}
-
-    //}   
-    //if(boxes[8] === currentPlayer){
-      //if(boxes[5] === currentPlayer && boxes[2] === player) {
-        //console.log(`${currentPlayer} wins on right.`);
-        //return true;
-    //}
-      //  if(boxes[7] === currentPlayer && boxes[6] === player) {
-        //console.log(`${currentPlayer} wins on bottom.`);
-        //return true;
-      //}   
-   //}        if(boxes[4] === currentPlayer) {
-     //  if(boxes[5] === currentPlayer && boxes[3] === player) {
-       //    console.log(`${currentPlayer} wins on the left.`);
-        //}
-        //if(boxes[7] === currentPlayer && boxes[6] === player){
-        // console.log(`${currentPlayer} wins on the left.`);
-         //return true;         }
-    //}
- //}
-
-
-
-
-
-
-
-
-
-
-
-     
